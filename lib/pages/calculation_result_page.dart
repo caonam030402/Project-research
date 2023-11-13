@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project_research/components/button.dart';
 import 'package:project_research/components/tool_bar.dart';
 import 'package:project_research/configs/app_icons.dart';
 import 'package:project_research/styles/app_colors.dart';
@@ -25,13 +26,9 @@ class calculationResultPage extends StatelessWidget {
     return Scaffold(
       appBar: const ToolBar(title: 'Result'),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: AppStyles.PaddingBothSidesPage),
+        padding: const EdgeInsets.all(AppStyles.PaddingBothSidesPage),
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +52,15 @@ class calculationResultPage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 40,
+              height: 50,
+            ),
+            SvgPicture.asset(
+              result.icon,
+              height: 50,
+              color: Color(int.parse(result.color)),
+            ),
+            SizedBox(
+              height: 17,
             ),
             // SvgPicture.asset(AppIcons.im_happy),
             Text(
@@ -78,10 +83,6 @@ class calculationResultPage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            SvgPicture.asset(
-              result.icon,
-              color: Color(int.parse(result.color)),
-            ),
             SizedBox(
               height: 30,
             ),
@@ -103,6 +104,13 @@ class calculationResultPage extends StatelessWidget {
                     ),
                     Text("${result.advice}")
                   ]),
+            ),
+            Spacer(),
+            Button(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              text: 'Comback',
             )
           ],
         ),
